@@ -5,8 +5,8 @@ import React, { useState } from "react";
 import { FaBars } from "react-icons/fa6";
 import { MdClose } from "react-icons/md";
 import { useUser } from "../context/UserContext";
-
-
+import { MdLogout } from "react-icons/md";
+import { FaUserCircle } from "react-icons/fa";
 
 const data = [
     {menu: 'Home', link: '/'},
@@ -33,11 +33,11 @@ const { user, logout } = useUser();
 
 
   return (
-    <nav className="flex items-center justify-between text-black body-font py-5 w-[90%] mx-auto sticky top-0 z-50 bg-white">
+    <nav className="flex items-center justify-between bg-orange-50 text-black body-font py-5 px-16 sticky top-0 z-50">
      <div className="flex">
      <Link
           href="/"
-          className="flex title-font font-medium items-center text-black  hover:cursor-pointer"
+          className="flex title-font items-center text-black  hover:cursor-pointer"
         >
           <Image
             src="/LogoImage.png"
@@ -50,7 +50,7 @@ const { user, logout } = useUser();
           </span>
         </Link>
      </div>
-        <div className="ml-auto pl-12 lg:ml-0 md:hidden hidden gap-8 lg:flex lg:flex-wrap font-semibold items-center text-base justify-center">
+        <div className="ml-auto pl-12 lg:ml-0 md:hidden hidden gap-8 lg:flex lg:flex-wrap  items-center text-base justify-center">
 
 {
     data.map((e,id)=>{
@@ -97,7 +97,7 @@ const { user, logout } = useUser();
 }
       </div>
       <div>
-{ user ?  <div>Hello <br/> {user.username}</div> : <div className="space-x-4">
+{ user ?  <div className="flex gap-6 items-center justify-center"><div className="text-3xl flex items-center"><FaUserCircle /></div><div>Hello, <br/> {user.username}</div> <div className="text-3xl"><button className="flex hover:text-red-500 items-center" onClick={logout}><MdLogout/> </button></div></div> : <div className="space-x-4">
         <button className="px-4 py-2 bg-orange-400 rounded-full border-2 border-orange-500 text-white text-lg">
           <Link href="/login" className="hover:cursor-pointer">Login</Link>
         </button>
